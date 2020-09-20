@@ -21,7 +21,7 @@ print("Current Time =", current_time)
 
 
 class ApiLocation:
-    stuff = "stuff"
+    
 
 
 
