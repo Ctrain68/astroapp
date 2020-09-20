@@ -21,6 +21,7 @@ print("Current Time =", current_time)
 
 
 class ApiLocation:
+    stuff = "stuff"
 
 
 
@@ -50,11 +51,68 @@ class ApiLocation:
 
 here = ApiLocation()
 
-here.city()
+
  
 print(here.location())
 
 
+class ApiMoon:
+    
+
+
+    def __init__(self):
+        self.url = "https://api.ipgeolocation.io/astronomy?apiKey="
+        self.key = "a22d39a1a1c14c2b863b0f340ca8ab80"
+        self.connector = "&location="
+        
+        self.location = here.city()
+
+    
+    def get(self):
+        return requests.get(self.url+self.key+self.connector+self.location)
+
+    def moon(self):
+        data = json.loads(self.get().text)
+        # print(json.loads(data.text))
+        return (f"Moonrise is {data['moonrise']} and moonset is {data['moonset']}")   
+        
+
+# print(ApiLocation.stuff)
+
+moons = ApiMoon()
+
+
+ 
+print(moons.moon())
+
+class ApiSun:
+    
+
+
+    def __init__(self):
+        self.url = "https://api.ipgeolocation.io/astronomy?apiKey="
+        self.key = "a22d39a1a1c14c2b863b0f340ca8ab80"
+        self.connector = "&location="
+        
+        self.location = here.city()
+
+    
+    def get(self):
+        return requests.get(self.url+self.key+self.connector+self.location)
+
+    def moon(self):
+        data = json.loads(self.get().text)
+        # print(json.loads(data.text))
+        return (f"Moonrise is {data['sunrise']} and moonset is {data['sunset']}")
+        
+
+# print(ApiLocation.stuff)
+
+moons = ApiMoon()
+
+
+ 
+print(moons.moon())
 #     response = ""
 
 
