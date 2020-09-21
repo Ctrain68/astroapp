@@ -55,6 +55,7 @@ here = ApiLocation()
  
 print(here.location())
 
+date_selected = "2020-06-05"
 
 class ApiMoon:
     
@@ -64,12 +65,36 @@ class ApiMoon:
         self.url = "https://api.ipgeolocation.io/astronomy?apiKey="
         self.key = "a22d39a1a1c14c2b863b0f340ca8ab80"
         self.connector = "&location="
-        
         self.location = here.city()
+        self.date_connector = "&date="
+        self.date_selected = date_selected
+        
+
 
     
     def get(self):
         return requests.get(self.url+self.key+self.connector+self.location)
+
+    def get_date(self):
+        print(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
+        return requests.get(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
+
+    # def date(self, date_entry):
+    #     self.date_entry = date_entry
+    def solarfordate(self):
+        data = json.loads(self.get_date().text)
+        # print(json.loads(data.text))
+        return (f"Sunrise is {data['sunrise']} and sunset is {data['sunset']}")
+
+    def lunarfordate(self):
+        data = json.loads(self.get_date().text)
+        # print(json.loads(data.text))
+        return (f"Sunrise is {data['sunrise']} and sunset is {data['sunset']}")
+
+    def moon(self):
+        data = json.loads(self.get().text)
+        # print(json.loads(data.text))
+        return (f"Sunrise is {data['sunrise']} and sunset is {data['sunset']}")   
 
     def moon(self):
         data = json.loads(self.get().text)
@@ -84,26 +109,27 @@ moons = ApiMoon()
 
  
 print(moons.moon())
+print(moons.solarfordate())
 
-class ApiSun:
+# class ApiSun:
     
 
 
-    def __init__(self):
-        self.url = "https://api.ipgeolocation.io/astronomy?apiKey="
-        self.key = "a22d39a1a1c14c2b863b0f340ca8ab80"
-        self.connector = "&location="
+#     def __init__(self):
+#         self.url = "https://api.ipgeolocation.io/astronomy?apiKey="
+#         self.key = "a22d39a1a1c14c2b863b0f340ca8ab80"
+#         self.connector = "&location="
         
-        self.location = here.city()
+#         self.location = here.city()
 
     
-    def get(self):
-        return requests.get(self.url+self.key+self.connector+self.location)
+#     def get(self):
+#         return requests.get(self.url+self.key+self.connector+self.location)
 
-    def moon(self):
-        data = json.loads(self.get().text)
-        # print(json.loads(data.text))
-        return (f"Moonrise is {data['sunrise']} and moonset is {data['sunset']}")
+#     def moon(self):
+#         data = json.loads(self.get().text)
+#         # print(json.loads(data.text))
+#         return (f"Moonrise is {data['sunrise']} and moonset is {data['sunset']}")
         
 
 # print(ApiLocation.stuff)
