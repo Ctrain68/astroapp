@@ -1,4 +1,5 @@
 from datetime import datetime 
+from datetime import date
 import socket
 import json
 import urllib.request
@@ -53,9 +54,9 @@ here = ApiLocation()
 
 
  
-print(here.location())
+# print(here.location())
 
-date_selected = "2020-06-05"
+# date_selected = "2020-06-05"
 
 class ApiMoon:
     
@@ -67,8 +68,8 @@ class ApiMoon:
         self.connector = "&location="
         self.location = here.city()
         self.date_connector = "&date="
-        self.date_selected = date_selected
-        self.today_date = self.for_today_date()
+        self.date_selected = self.get_date()
+        # self.today_date = self.for_today_date()
         self.any_date = self.for_date()
         self.sunrise = "Sunrise time is "
         self.sunset = " Sunset time is "
@@ -78,30 +79,54 @@ class ApiMoon:
 
 
     
-    def get(self):
-        return requests.get(self.url+self.key+self.connector+self.location)
+    # def get(self):
+    #     return requests.get(self.url+self.key+self.connector+self.location)
 
     def get_date(self):
+        enter_date = int(input("Please select 1 to use current date or 2 to enter in a date of your choice: "))
+        while enter_date != 1 and enter_date != 2:
+
+            enter_date = int(input("Please select 1 to use current date or 2 to enter in a date of your choice: "))
+
+        if enter_date == 1:
+            today = date.today()
+            
+            todays_date= today.strftime("%Y-%m-%d")
+            print(f"You have selected {todays_date} as your date")
+            return todays_date
+
+        elif enter_date == 2:
+            year = input("Enter year ")
+            month = input("Enter Month MM")
+            day = input("Enter Date DD")
+            other_date = f"{year}-{month}-{day}"
+            print(f"You have selected {other_date} as your date")
+            return other_date
+
+    def get(self):
         return requests.get(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
 
-    # def date(self, date_entry):
-    #     self.date_entry = date_entry
+    # def date_selected(self):
+    #     return self.date_selected
+    # # def date(self, date_entry):
+    # #     self.date_entry = date_entry
     def for_date(self):
         # print(json.loads(data.text))
-        return json.loads(self.get_date().text)
-
-    def for_today_date(self):
         return json.loads(self.get().text)
 
+    # def for_today_date(self):
+    #     return json.loads(self.get().text)
+
+    
 
     def object_for_date(self):
         # print(json.loads(data.text))
         return self.sunrise+str(self.any_date['sunrise'])+self.sunset+str(self.any_date["sunset"])
         
 
-    def object_today(self):
-        # print(json.loads(data.text))
-        return (self.moonrise + str(self.today_date['moonrise'])+ self.moonset+ str(self.today_date['moonset']))
+    # def object_today(self):
+    #     # print(json.loads(data.text))
+    #     return (self.moonrise + str(self.today_date['moonrise'])+ self.moonset+ str(self.today_date['moonset']))
 
     # def moon(self):
 
@@ -113,9 +138,11 @@ class ApiMoon:
 
 moons = ApiMoon()
 
-print(moons.object_for_date())
+# print(moons.date_selected("2020-08-08"))
+
+# print(moons.object_for_date())
  
-print(moons.object_today())
+print(moons.object_for_date())
 
 
 # class ApiSun:
