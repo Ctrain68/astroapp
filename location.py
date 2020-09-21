@@ -68,7 +68,13 @@ class ApiMoon:
         self.location = here.city()
         self.date_connector = "&date="
         self.date_selected = date_selected
-        
+        self.today_date = self.for_today_date()
+        self.any_date = self.for_date()
+        self.sunrise = "Sunrise time is "
+        self.sunset = " Sunset time is "
+        self.moonrise = "Moonrise time is "
+        self.moonset = " Mooonset time is "
+
 
 
     
@@ -76,40 +82,41 @@ class ApiMoon:
         return requests.get(self.url+self.key+self.connector+self.location)
 
     def get_date(self):
-        print(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
         return requests.get(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
 
     # def date(self, date_entry):
     #     self.date_entry = date_entry
-    def solarfordate(self):
-        data = json.loads(self.get_date().text)
+    def for_date(self):
         # print(json.loads(data.text))
-        return (f"Sunrise is {data['sunrise']} and sunset is {data['sunset']}")
+        return json.loads(self.get_date().text)
 
-    def lunarfordate(self):
-        data = json.loads(self.get_date().text)
-        # print(json.loads(data.text))
-        return (f"Sunrise is {data['sunrise']} and sunset is {data['sunset']}")
+    def for_today_date(self):
+        return json.loads(self.get().text)
 
-    def moon(self):
-        data = json.loads(self.get().text)
-        # print(json.loads(data.text))
-        return (f"Sunrise is {data['sunrise']} and sunset is {data['sunset']}")   
 
-    def moon(self):
-        data = json.loads(self.get().text)
+    def object_for_date(self):
         # print(json.loads(data.text))
-        return (f"Moonrise is {data['moonrise']} and moonset is {data['moonset']}")   
+        return self.sunrise+str(self.any_date['sunrise'])+self.sunset+str(self.any_date["sunset"])
+        
+
+    def object_today(self):
+        # print(json.loads(data.text))
+        return (self.moonrise + str(self.today_date['moonrise'])+ self.moonset+ str(self.today_date['moonset']))
+
+    # def moon(self):
+
+    #     # print(json.loads(data.text))
+    #     return (f"Moonrise is {data['moonrise']} and moonset is {data['moonset']}")   
         
 
 # print(ApiLocation.stuff)
 
 moons = ApiMoon()
 
-
+print(moons.object_for_date())
  
-print(moons.moon())
-print(moons.solarfordate())
+print(moons.object_today())
+
 
 # class ApiSun:
     
@@ -134,11 +141,7 @@ print(moons.solarfordate())
 
 # print(ApiLocation.stuff)
 
-moons = ApiMoon()
 
-
- 
-print(moons.moon())
 #     response = ""
 
 
