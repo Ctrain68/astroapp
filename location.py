@@ -10,9 +10,9 @@ import requests
 
 # print(local_ip)
 
-external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
+# external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
 
-print(external_ip)
+# print(external_ip)
 
 now = datetime.now()
 
@@ -74,6 +74,8 @@ class ApiMoon:
         self.sunset = " Sunset time is "
         self.moonrise = "Moonrise time is "
         self.moonset = " Mooonset time is "
+        self.sun_combined = self.sunrise+str(self.any_date['sunrise'])+self.sunset+str(self.any_date["sunset"])
+        self.moon_combined = self.moonrise+str(self.any_date['moonrise'])+self.moonset+str(self.any_date["moonset"])
 
 
 
@@ -91,14 +93,15 @@ class ApiMoon:
             return todays_date
 
         elif enter_date == 2:
-            year = input("Enter year ")
-            month = input("Enter Month MM")
-            day = input("Enter Date DD")
+            year = input("Enter year:\n ")
+            month = input("Enter Month:\n MM")
+            day = input("Enter Date DD:\n")
             other_date = f"{year}-{month}-{day}"
             print(f"You have selected {other_date} as your date")
             return other_date
 
     def get(self):
+        # print(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
         return requests.get(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
 
 
@@ -125,11 +128,11 @@ class ApiMoon:
          """))
 
         if luna_solar == 1:
-            return self.moonrise+str(self.any_date['moonrise'])+self.moonset+str(self.any_date["moonset"])
+            return self.moon_combined
         elif luna_solar == 2:
-            return self.sunrise+str(self.any_date['sunrise'])+self.sunset+str(self.any_date["sunset"])
+            return self.sun_combined
         elif luna_solar == 3:
-            return self.moonrise+str(self.any_date['moonrise'])+self.moonset+str(self.any_date["moonset"]) + "\n" + self.sunrise+str(self.any_date['sunrise'])+self.sunset+str(self.any_date["sunset"])
+            return self.moon_combined + "\n" + self.sun_combined
     
         
 
@@ -137,9 +140,9 @@ class ApiMoon:
 
 
 
-moons = ApiMoon()
+# moons = ApiMoon()
 
 
  
-print(moons.object_for_date())
+# print(moons.object_for_date())
 

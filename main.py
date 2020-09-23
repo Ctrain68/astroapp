@@ -15,14 +15,16 @@ greeting = "Welcome to ASTROAPP V1.0"
 
 
 
-date_selected = input("Please enter the date you require data for in YYYY-MM-DD format.")
 
 
-here = ApiLocation()
+
+# here = ApiLocation()
+
+# print(here.city())
 
 
-moons = ApiMoon()
+# moons = ApiMoon()
 
-print(moons.object_for_date())
+# print(moons.object_for_date())
  
-print(moons.object_today())
+# print(moons.object_today())
