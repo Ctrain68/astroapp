@@ -93,9 +93,9 @@ class ApiMoon:
             return todays_date
 
         elif enter_date == 2:
-            year = input("Enter year:\n ")
-            month = input("Enter Month:\n MM")
-            day = input("Enter Date DD:\n")
+            year = input("Enter year: YYYY\n ")
+            month = input("Enter Month:MM\n ")
+            day = input("Enter Date:DD\n")
             other_date = f"{year}-{month}-{day}"
             print(f"You have selected {other_date} as your date")
             return other_date
@@ -144,5 +144,7 @@ moons = ApiMoon()
 
 
  
+# print(moons.object_for_date())
+
 print(moons.object_for_date())
 
