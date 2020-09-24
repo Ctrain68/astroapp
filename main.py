@@ -18,13 +18,13 @@ greeting = "Welcome to ASTROAPP V1.0"
 
 
 
-# here = ApiLocation()
+here = ApiLocation()
 
-# print(here.city())
+print(here.city())
 
 
-# moons = ApiMoon()
+moons = ApiMoon()
 
-# print(moons.object_for_date())
+print(moons.object_for_date())
  
-# print(moons.object_today())
+print(moons.object_today())

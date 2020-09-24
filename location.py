@@ -140,9 +140,9 @@ class ApiMoon:
 
 
 
-# moons = ApiMoon()
+moons = ApiMoon()
 
 
  
-# print(moons.object_for_date())
+print(moons.object_for_date())
 
