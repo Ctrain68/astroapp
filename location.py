@@ -54,7 +54,7 @@ here = ApiLocation()
 
 
  
-# print(here.location())
+print(here.location())
 
 # date_selected = "2020-06-05"
 
