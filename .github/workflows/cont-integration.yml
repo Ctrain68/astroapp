@@ -29,14 +29,15 @@ jobs:
         with:
           host: 34.194.100.219
           username: github-actions
-          #Name of the secrets variable where you put your secret key
-          key: EC2
+          key: ${{ secrets.EC2 }}
           port: 22
           script: |
             rm -rf astroapp
             git clone https://github.com/Ctrain68/astroapp.git
             python3.8 -m venv /home/github-actions/astroapp/venv
-            /home/github-actions/astroapp/venv/bin/pip3.8 install -r /home/github-actions/astroapp/requirements.txt
+            source /home/github-actions/astroapp/venv/bin/activate
+            pip install -r /home/github-actions/astroapp/requirements.txt
+
         
      
      
