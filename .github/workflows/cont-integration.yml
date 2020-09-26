@@ -22,6 +22,7 @@ jobs:
       - name: Run Tests
         run: |
           python -m unittest discover tests/
+          flake8 main.py
   deployment:
     needs: test_suite
     runs-on: ubuntu-latest

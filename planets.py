@@ -5,8 +5,6 @@ import requests
 import os
 
 
-# MOON_API_KEY = os.environ.get("MOON_API_KEY")
-
 location = ApiLocation()
 
 
@@ -23,14 +21,17 @@ class ApiMoon:
         self.sunset = " Sunset time is "
         self.moonrise = "Moonrise time is "
         self.moonset = " Mooonset time is "
-        self.sun_combined = self.sunrise + str(self.any_date['sunrise']) + self.sunset + str(self.any_date["sunset"])
-        self.moon_combined = self.moonrise + str(self.any_date['moonrise']) + self.moonset + str(
-            self.any_date["moonset"])
+        self.sun_combined = self.sunrise + \
+            str(self.any_date['sunrise']) + self.sunset + str(self.any_date["sunset"])
+        self.moon_combined = self.moonrise + \
+            str(self.any_date['moonrise']) + self.moonset + str(self.any_date["moonset"])
 
     def get_date(self):
-        enter_date = int(input("Please select 1 to use current date or 2 to enter in a date of your choice: "))
+        enter_date = int(input(
+            "Please select 1 to use current date or 2 to enter in a date of your choice: "))
         while enter_date != 1 and enter_date != 2:
-            enter_date = int(input("""Please select 1 to use current date or 2 to enter in a date of your choice: """))
+            enter_date = int(input(
+                """Please select 1 to use current date or 2 to enter in a date of your choice: """))
 
         if enter_date == 1:
             today = date.today()
@@ -48,9 +49,13 @@ class ApiMoon:
             return other_date
 
     def get(self):
-        # print(self.url+self.key+self.connector+self.location+self.date_connector+self.date_selected)
         return requests.get(
-            self.url + self.key + self.connector + self.location + self.date_connector + self.date_selected)
+            self.url +
+            self.key +
+            self.connector +
+            self.location +
+            self.date_connector +
+            self.date_selected)
 
     def for_date(self):
 
@@ -77,6 +82,6 @@ class ApiMoon:
             return self.moon_combined + "\n" + self.sun_combined
 
 
-moons = ApiMoon()
-
-print(moons.object_for_date())
+# moons = ApiMoon()
+#
+# print(moons.object_for_date())
