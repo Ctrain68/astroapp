@@ -14,12 +14,8 @@ class ApiLocation:
         self.location = self.city
 
     def get_ip(self):
-        try:
-            external_ip = urllib.request.urlopen(
-                'https://ident.me').read().decode('utf8')
-        except:
-            print("API Error")
-        return external_ip
+       return urllib.request.urlopen('https://ident.me').read().decode('utf8')
+
 
     def get(self):
         return requests.get(self.url + self.ip + self.connector + self.key)
@@ -29,7 +25,7 @@ class ApiLocation:
         return data["city"]
 
 
-here = ApiLocation()
-
-
-print(here.location())
+# here = ApiLocation()
+#
+#
+# print(here.location())

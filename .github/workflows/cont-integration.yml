@@ -23,6 +23,7 @@ jobs:
         run: |
           python -m unittest discover tests/
           flake8 main.py
+          mypy planets.py
   deployment:
     needs: test_suite
     runs-on: ubuntu-latest

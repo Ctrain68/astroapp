@@ -1,13 +1,18 @@
 import unittest
-# from main_test import add
+from location import ApiLocation
 
-# class TestMathFunctions(unittest.TestCase):
-#     def test_add(self):
-#         result = add(1,5)
+class TestMathFunctions(unittest.TestCase):
+    def test_get_location(self):
+        check_ip = ApiLocation.get_ip(self)
+        self.assertEqual(type(check_ip), str)
+        self.assertIsNotNone(check_ip)
 
-#         self.assertEqual(result, 6, msg ="Add did not bring back 6 when given 1 and 5")
 
 
+
+
+
+print("check")
 
 
 
