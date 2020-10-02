@@ -31,27 +31,51 @@ class ApiMoon:
     or to enter a date of their choice in the format described'''
 
     def get_date(self):
-        enter_date = int(input(
-            "Please select 1 to use current date"
-            + "or 2 to enter in a date of your choice: "))
-        while enter_date != 1 and enter_date != 2:
-            enter_date = int(input("Please select 1 to use current date " +
-                                   "or 2 to enter in a date of your choice: "))
+        try:
 
-        if enter_date == 1:
-            today = date.today()
+            monthdict = {
+                "01": 31,
+                "02": 28,
+                "03": 31,
+                "04": 30,
+                "05": 31,
+                "06": 30,
+                "07": 31,
+                "08": 31,
+                "09": 30,
+                "10": 31,
+                "11": 30,
+                "12": 31
+            }
+            enter_date = int(input(
+                "Please select 1 to use current date "
+                + "or 2 to enter in a date of your choice: "))
+            while enter_date != 1 and enter_date != 2:
+                enter_date = int(input("Please select 1 to use current date " +
+                                       "or 2 to enter in a date of your choice: "))
 
-            todays_date = today.strftime("%Y-%m-%d")
-            print(f"You have selected {todays_date} as your date")
-            return todays_date
+            if enter_date == 1:
+                today = date.today()
 
-        elif enter_date == 2:
-            year = input("Enter year: YYYY\n ")
-            month = input("Enter Month:MM\n ")
-            day = input("Enter Date:DD\n")
-            other_date = f"{year}-{month}-{day}"
-            print(f"You have selected {other_date} as your date")
-            return other_date
+                todays_date = today.strftime("%Y-%m-%d")
+                print(f"You have selected {todays_date} as your date")
+                return todays_date
+
+            elif enter_date == 2:
+                year = input("Enter year: YYYY\n ")
+                while int(year) < 0 or int(year) > 4000 or (len(str(year))) < 4:
+                    year = input("Enter year: YYYY\n ")
+                month = input("Enter Month:MM\n ")
+                while int(month) < 0 or int(month) > 12 or (len(str(month))) < 2:
+                    month = input("Enter Month:MM\n ")
+                day = input("Enter Date:DD\n")
+                while int(day) < 0 or int(day) > monthdict[month]:
+                    day = input("Enter Date:DD\n")
+                other_date = f"{year}-{month}-{day}"
+                print(f"You have selected {other_date} as your date")
+                return other_date
+        except:
+            (print("Error invalid input"))
     '''Returns a response from the API based on the location
     and date provided'''
 
