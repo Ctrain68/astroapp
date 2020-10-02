@@ -51,8 +51,10 @@ class ApiMoon:
                 "Please select 1 to use current date "
                 + "or 2 to enter in a date of your choice: "))
             while enter_date != 1 and enter_date != 2:
-                enter_date = int(input("Please select 1 to use current date " +
-                                       "or 2 to enter in a date of your choice: "))
+                enter_date = int(
+                    input(
+                        "Please select 1 to use current date " +
+                        "or 2 to enter in a date of your choice: "))
 
             if enter_date == 1:
                 today = date.today()
@@ -63,10 +65,12 @@ class ApiMoon:
 
             elif enter_date == 2:
                 year = input("Enter year: YYYY\n ")
-                while int(year) < 0 or int(year) > 4000 or (len(str(year))) < 4:
+                while int(year) < 0 or int(
+                        year) > 4000 or (len(str(year))) < 4:
                     year = input("Enter year: YYYY\n ")
                 month = input("Enter Month:MM\n ")
-                while int(month) < 0 or int(month) > 12 or (len(str(month))) < 2:
+                while int(month) < 0 or int(
+                        month) > 12 or (len(str(month))) < 2:
                     month = input("Enter Month:MM\n ")
                 day = input("Enter Date:DD\n")
                 while int(day) < 0 or int(day) > monthdict[month]:
@@ -74,7 +78,7 @@ class ApiMoon:
                 other_date = f"{year}-{month}-{day}"
                 print(f"You have selected {other_date} as your date")
                 return other_date
-        except:
+        except BaseException:
             (print("Error invalid input"))
     '''Returns a response from the API based on the location
     and date provided'''
