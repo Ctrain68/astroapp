@@ -22,16 +22,21 @@ class ApiMoon:
         self.moonrise = "Moonrise time is "
         self.moonset = " Mooonset time is "
         self.sun_combined = self.sunrise + \
-            str(self.any_date['sunrise']) + self.sunset + str(self.any_date["sunset"])
+            str(self.any_date['sunrise']) + \
+            self.sunset + str(self.any_date["sunset"])
         self.moon_combined = self.moonrise + \
-            str(self.any_date['moonrise']) + self.moonset + str(self.any_date["moonset"])
+            str(self.any_date['moonrise']) + \
+            self.moonset + str(self.any_date["moonset"])
+    ''' Prompts the user to select current date which is then returned
+    or to enter a date of their choice in the format described'''
 
     def get_date(self):
         enter_date = int(input(
-            "Please select 1 to use current date or 2 to enter in a date of your choice: "))
+            "Please select 1 to use current date"
+            + "or 2 to enter in a date of your choice: "))
         while enter_date != 1 and enter_date != 2:
-            enter_date = int(input(
-                """Please select 1 to use current date or 2 to enter in a date of your choice: """))
+            enter_date = int(input("Please select 1 to use current date " +
+                                   "or 2 to enter in a date of your choice: "))
 
         if enter_date == 1:
             today = date.today()
@@ -47,6 +52,8 @@ class ApiMoon:
             other_date = f"{year}-{month}-{day}"
             print(f"You have selected {other_date} as your date")
             return other_date
+    '''Returns a response from the API based on the location
+    and date provided'''
 
     def get(self):
         return requests.get(
@@ -60,6 +67,8 @@ class ApiMoon:
     def for_date(self):
 
         return json.loads(self.get().text)
+    '''Returns information from the API based on the menu selection
+    for sunrise/set & moonrise/set for the date and location provided'''
 
     def object_for_date(self):
         luna_solar = int(input("""Please Select from the options below:
@@ -80,8 +89,3 @@ class ApiMoon:
             return self.sun_combined
         elif luna_solar == 3:
             return self.moon_combined + "\n" + self.sun_combined
-
-
-# moons = ApiMoon()
-#
-# print(moons.object_for_date())
