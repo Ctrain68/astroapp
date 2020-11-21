@@ -1,4 +1,4 @@
-from location import ApiLocation
+from src.location import ApiLocation
 import unittest
 
 
