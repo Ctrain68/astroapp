@@ -21,11 +21,11 @@ jobs:
           export LOCATION_API_KEY=${{ secrets.LOCATION_API }}
       - name: Run Tests
         run: |
-          python -m unittest discover tests/
-          flake8 main.py
-          flake8 location.py
-          flake8 planets.py
-          mypy planets.py
+          python -m unittest discover src/tests/
+          flake8 src/main.py
+          flake8 src/location.py
+          flake8 src/planets.py
+          mypy src/planets.py
   deployment:
     needs: test_suite
     runs-on: ubuntu-latest
