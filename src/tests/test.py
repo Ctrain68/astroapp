@@ -1,5 +1,6 @@
-import unittest
 from location import ApiLocation
+import unittest
+
 
 class TestMathFunctions(unittest.TestCase):
     def test_get_location(self):
