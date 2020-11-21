@@ -18,7 +18,7 @@ Once the data has been returned the user is prompted for input to specify which 
 
 ## Flowchart
 
-![Flowchart](/capture.jpg)
+![Flowchart](docs/Capture.JPG)
 
 
 ## Installation

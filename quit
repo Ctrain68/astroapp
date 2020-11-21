@@ -1,0 +1,29 @@
+* [33mb853541[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m my py installation
+* [33m401f486[m flake 8 edits
+* [33me1a0cb1[m Add error checking on dates
+* [33m13dc611[m added flake8 test to all files in ci/cd
+* [33mf0debbd[m added comments
+* [33mecd903c[m Update tests
+* [33me0b321f[m flake 8 error fixing
+* [33md1cd8f4[m fixed requirements
+* [33me890c66[m Added api kes to secret1
+* [33m7b11d83[m Added api kes to secret
+* [33m6e666cb[m change print
+* [33m308ead1[m added deploymen. altered
+* [33mae435a0[m added deployment
+* [33ma569b41[m Changed some printout
+* [33md44f8ed[m small print errors
+* [33mdea1d66[m requirements issue
+* [33m2cd0ee1[m create test folder
+* [33m1edd5f5[m workflow
+* [33m169dff4[m user input for moon and sun
+* [33m8158091[m added user date entry
+* [33md83da6f[m date code changed
+* [33m5e9e37a[m[33m ([m[1;32mdrycode[m[33m)[m dates added for an option for sunset sunrise etc
+* [33m892d24d[m one moon or sun class
+* [33m524cae0[m moon added
+* [33mb3b430f[m first class geolocation
+* [33m1885a59[m requirements.txt added
+* [33m3330aeb[m psuedo coding
+* [33m657cb79[m file creation
+* [33m62b3faa[m Initial commit
